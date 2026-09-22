@@ -1,5 +1,5 @@
 import { calculateTotal } from "../expense-functions/analytics.js";
-import { addExpense, deleteExpensem } from "../expense-functions/expenseOperations.js";
+import { addExpense, deleteExpense } from "../expense-functions/expenseOperations.js";
 
 export class Budget {
     constructor(limit, expenses = []) {

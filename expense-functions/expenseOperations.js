@@ -1,4 +1,4 @@
-import { validateExpense } from "./validaton.js"; // Note: Fixed import spelling if needed
+import { validateExpense } from "./validation.js";
 
 export function addExpense(expenses, title, amount, category, date) {
    

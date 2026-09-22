@@ -11,7 +11,7 @@ export function calculateAverage(expenses){
     return calculateTotal(expenses)/expenses.length;
 }
 
-export function getHightestExpense(expenses){
+export function getHighestExpense(expenses){
     if (expenses.length===0){
         return undefined;
     }
