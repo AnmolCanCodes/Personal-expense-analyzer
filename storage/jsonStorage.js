@@ -1,4 +1,4 @@
-import { expenses } from "../data/expense.js";
+import { expenses } from "../expense-analyzer-frontend/src/data/expense.js";
 
 export function expenseToJson(Expense){
     return JSON.stringify(Expense,null,2);
