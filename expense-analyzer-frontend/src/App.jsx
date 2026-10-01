@@ -1,122 +1,66 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import './App.css'
+import { useState } from "react";
+
+import { expenses as seedExpenses } from "./data/expense.js";
+
+import TopBar from "./components/layout/TopBar.jsx";
+import Sidebar from "./components/layout/Sidebar.jsx";
+import MobileNav from "./components/layout/MobileNav.jsx";
+
+import Overview from "./pages/Overview.jsx";
+import Timeline from "./pages/Timeline.jsx";
+import Budget from "./pages/Budget.jsx";
+import Categories from "./pages/Categories.jsx";
+import Insights from "./pages/Insights.jsx";
+
+const MONTHLY_LIMIT = 15000;
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [expenses, setExpenses] = useState(seedExpenses);
+  const [view, setView] = useState("overview");
+  const [activeCategory, setActiveCategory] = useState(null);
+
+  function handleAddExpense(expense) {
+    setExpenses((current) => [...current, expense]);
+  }
+
+  function handleDeleteExpense(id) {
+    setExpenses((current) => current.filter((expense) => expense.id !== id));
+  }
+
+  function handleCategorySelect(category) {
+    setActiveCategory(category);
+  }
+
+  function handleNavigate(nextView) {
+    setView(nextView);
+  }
+
+  const pageProps = {
+    expenses,
+    activeCategory,
+    onCategorySelect: handleCategorySelect,
+    onAdd: handleAddExpense,
+    onDelete: handleDeleteExpense,
+    limit: MONTHLY_LIMIT,
+  };
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+    <div className="app-shell">
+      <Sidebar view={view} onNavigate={handleNavigate} />
 
-      <div className="ticks"></div>
+      <div className="app-main">
+        <TopBar view={view} />
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+        {view === "overview" && <Overview {...pageProps} />}
+        {view === "timeline" && <Timeline {...pageProps} />}
+        {view === "budget" && <Budget {...pageProps} />}
+        {view === "categories" && <Categories {...pageProps} />}
+        {view === "insights" && <Insights {...pageProps} />}
+      </div>
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+      <MobileNav view={view} onNavigate={handleNavigate} />
+    </div>
+  );
 }
 
-export default App
+export default App;
