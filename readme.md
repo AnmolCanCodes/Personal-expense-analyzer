@@ -1,503 +1,214 @@
-# Money Atlas
+# Personal Expense Analyzer
 
-> **See where your money travels.**
+A modern personal finance dashboard for tracking expenses, monitoring budgets, and understanding spending patterns through a clean, data-focused interface.
 
-Money Atlas is a visual personal expense analyzer built with **React and JavaScript**. Instead of presenting financial data as a conventional spreadsheet-style dashboard, it turns spending activity into a visual map of where money moves across categories, time, and budgets.
-
-The project focuses on building a polished, component-driven frontend while practicing core React concepts such as **state management, props, reusable components, event handling, conditional rendering, array methods, and data transformation**.
+This project combines a React-based frontend with reusable JavaScript logic for expense analytics, validation, and budget evaluation. It is designed to help users review their spending habits in a clear and visually structured way without relying on a traditional spreadsheet workflow.
 
 ---
 
-## ✦ Features
+## Overview
 
-### Spending Overview
+The application provides a complete expense-tracking experience with:
 
-* Total spending at a glance
-* Average transaction value
-* Transaction count
-* Spending period summary
-* Visual overview of spending activity
+- an overview dashboard
+- category-based analysis
+- spending timeline
+- budget monitoring
+- transaction insights
+- a lightweight expense management flow
 
-### Spending Constellation
-
-A visual representation of spending categories.
-
-* Each category becomes a visual "planet"
-* Larger spending creates a larger visual node
-* Categories can be selected to explore their associated expenses
-* Spending data is transformed into a visual representation rather than a traditional table
-
-### Money Trail
-
-A timeline-based view of individual expenses.
-
-* Chronological expense history
-* Expense categories and dates
-* Individual transaction amounts
-* Category filtering
-* Expense deletion support
-
-### Add Expense
-
-A dedicated expense composer for recording new transactions.
-
-Users can provide:
-
-* Expense title
-* Amount
-* Category
-* Date
-
-New expenses immediately update the React interface through shared application state.
-
-### Budget Tracking
-
-A visual budget system that provides:
-
-* Monthly spending limit
-* Current spending
-* Remaining budget
-* Budget utilization percentage
-* Overspending detection
-* Spending pace and projection
-
-### Insights
-
-The application transforms raw expense data into useful summaries such as:
-
-* Highest expense
-* Average transaction
-* Category totals
-* Monthly spending
-* Daily spending pace
-* Monthly spending visualization
+It is built around the concept of turning financial activity into an interactive summary rather than a static ledger.
 
 ---
 
-## 🛠️ Tech Stack
+## Key Features
+
+### Expense Tracking
+- Add new expenses with title, amount, category, and date
+- Delete existing entries
+- View spending records in a structured timeline
+- Filter expenses by category
+
+### Financial Overview
+- Total expenditure summary
+- Average transaction value
+- Highest expense identification
+- Category-level visibility
+- Monthly spending evaluation
+
+### Budget Monitoring
+- Set and evaluate a monthly spending limit
+- Compare current spending against budget
+- Track remaining balance
+- Identify overspending conditions
+
+### Insights and Visual Analytics
+- Spending by category
+- Monthly trends
+- High-value transaction detection
+- Summary metrics for faster decision-making
+
+### User Experience
+- Responsive UI for desktop and mobile layouts
+- Clean navigation between sections
+- Dashboard-style presentation with a visual-first design
+
+---
+
+## Tech Stack
 
 ### Frontend
+- React
+- Vite
+- JavaScript
+- CSS
+- Material UI components
+- Lucide icons
 
-* **React**
-* **JavaScript (ES6+)**
-* **Vite**
-* **CSS**
-
-### React Concepts Practiced
-
-* Functional components
-* Props
-* `useState`
-* `useMemo`
-* Event handling
-* Conditional rendering
-* List rendering with `.map()`
-* Derived state
-* Component composition
-* Parent → child data flow
-* Child → parent communication through callbacks
-
-### JavaScript Concepts
-
-* Array methods
-
-  * `map()`
-  * `filter()`
-  * `reduce()`
-  * `sort()`
-  * `find()`
-* Destructuring
-* Spread syntax
-* Template literals
-* Objects and arrays
-* Date handling
-* `Intl.NumberFormat`
-* `Intl.DateTimeFormat`
-* ES modules
+### Core Logic
+- JavaScript modules for analytics and validation
+- Functional programming patterns
+- Array utilities such as map, filter, reduce, sort, and some
 
 ---
 
-## 📁 Project Structure
+## Repository Structure
 
 ```text
-expense-analyzer-frontend/
-│
-├── public/
-│
-├── src/
-│   │
-│   ├── components/
-│   │   │
-│   │   ├── layout/
-│   │   │   ├── Sidebar.jsx
-│   │   │   ├── TopBar.jsx
-│   │   │   └── MobileNav.jsx
-│   │   │
-│   │   ├── overview/
-│   │   │   ├── SpendingHero.jsx
-│   │   │   ├── SpendingConstellation.jsx
-│   │   │   ├── CategoryStrip.jsx
-│   │   │   └── RecentExpenses.jsx
-│   │   │
-│   │   ├── expenses/
-│   │   │   ├── ExpenseTimeline.jsx
-│   │   │   ├── ExpenseItem.jsx
-│   │   │   └── AddExpense.jsx
-│   │   │
-│   │   ├── budget/
-│   │   │   ├── BudgetMeter.jsx
-│   │   │   └── BudgetSummary.jsx
-│   │   │
-│   │   └── insights/
-│   │       ├── InsightCard.jsx
-│   │       └── MonthlyChart.jsx
-│   │
-│   ├── pages/
-│   │   ├── Overview.jsx
-│   │   ├── Timeline.jsx
-│   │   ├── Categories.jsx
-│   │   ├── Budget.jsx
-│   │   └── Insights.jsx
-│   │
-│   ├── data/
-│   │   └── expenses.js
-│   │
-│   ├── utils/
-│   │   ├── calculations.js
-│   │   └── formatters.js
-│   │
-│   ├── App.jsx
-│   ├── main.jsx
-│   └── index.css
-│
+expense_project/
+├── main.js
+├── readme.md
 ├── package.json
-├── package-lock.json
-└── README.md
+├── budget/
+│   └── budget.js
+├── expense-functions/
+│   ├── analytics.js
+│   ├── expenseOperations.js
+│   ├── monthlySummary.js
+│   └── validation.js
+├── expense-analyzer-frontend/
+│   ├── index.html
+│   ├── package.json
+│   ├── vite.config.js
+│   ├── public/
+│   └── src/
+│       ├── App.jsx
+│       ├── main.jsx
+│       ├── index.css
+│       ├── components/
+│       ├── data/
+│       ├── pages/
+│       └── utils/
+└── storage/
+    └── jsonStorage.js
 ```
 
 ---
 
-## 🧠 Application Architecture
+## Architecture
 
-Money Atlas separates the application into three primary layers:
+The project has two complementary layers:
 
-```text
-Data
- │
- ▼
-Utilities
- │
- ▼
-React Components
- │
- ▼
-Pages
- │
- ▼
-Application UI
-```
+1. Frontend dashboard
+   - Built with React and Vite
+   - Provides the consumer-facing spending experience
+   - Contains pages for overview, timeline, budget, categories, and insights
 
-### Data Layer
+2. Expense logic layer
+   - Located in the root project modules
+   - Handles operations such as validation, analytics, monthly summaries, and budget status
+   - Supports CLI-style experimentation and logic testing
 
-`src/data/expenses.js`
-
-Contains the initial expense dataset used by the application.
-
-### Utility Layer
-
-`src/utils/`
-
-Contains reusable logic for:
-
-* Calculating totals
-* Calculating averages
-* Finding the highest expense
-* Generating category totals
-* Generating monthly totals
-* Formatting currency
-* Formatting dates
-
-Keeping these operations outside components prevents business logic from being duplicated throughout the UI.
-
-### Component Layer
-
-`src/components/`
-
-Contains reusable UI components responsible for individual parts of the application.
-
-For example:
-
-```text
-SpendingHero
-CategoryStrip
-SpendingConstellation
-ExpenseTimeline
-BudgetMeter
-MonthlyChart
-```
-
-### Page Layer
-
-`src/pages/`
-
-Combines multiple components into complete application screens.
+This separation keeps business rules reusable while allowing the interface to remain focused on presentation and interaction.
 
 ---
 
-## 🔄 Data Flow
-
-The application follows React's one-way data flow.
-
-```text
-                 Overview
-                    │
-                    │ expenses
-                    ▼
-        ┌───────────┼────────────┐
-        │           │            │
-        ▼           ▼            ▼
-      Hero    Constellation   Timeline
-        │           │            │
-        └───────────┼────────────┘
-                    │
-              Shared State
-                    │
-                    ▼
-               Add Expense
-                    │
-                    │ onAdd()
-                    ▼
-                Overview
-                    │
-              setExpenses()
-                    │
-                    ▼
-              UI Re-renders
-```
-
-This allows multiple components to react to the same underlying expense data.
-
----
-
-## 🎨 Design Philosophy
-
-Money Atlas intentionally avoids the typical expense-dashboard design.
-
-Instead of:
-
-```text
-[ Total ]
-
-[ Pie Chart ] [ Bar Chart ]
-
-[ Expense Table ]
-```
-
-the interface is designed around the idea of **money movement**.
-
-### Visual language
-
-* Editorial typography
-* Dark, atmospheric interface
-* Generous whitespace
-* Minimal visual noise
-* Data-driven visual elements
-* Timeline-based interactions
-* Category "constellations"
-* Strong typography hierarchy
-
-The goal is to make financial data feel more like an **interactive visual journal** than an accounting spreadsheet.
-
----
-
-## 💻 Getting Started
+## Getting Started
 
 ### Prerequisites
 
-Make sure you have:
+- Node.js (18+ recommended)
+- npm
 
-* Node.js
-* npm
-* Git
-
-Check your versions:
-
-```bash
-node --version
-npm --version
-```
-
-### Installation
-
-Clone the repository:
-
-```bash
-git clone <your-repository-url>
-```
-
-Move into the project:
+### Install frontend dependencies
 
 ```bash
 cd expense-analyzer-frontend
-```
-
-Install dependencies:
-
-```bash
 npm install
 ```
 
-Start the development server:
+### Run the app locally
 
 ```bash
 npm run dev
 ```
 
-Open the local development URL shown by Vite.
+This starts the Vite development server and serves the app in the browser.
+
+### Run the CLI logic from the root project
+
+```bash
+node main.js
+```
+
+This launches the terminal-based expense workflow that allows adding, searching, filtering, and analyzing expenses.
 
 ---
 
-## 📜 Available Scripts
+## Available Scripts
 
-### Development
+In the frontend app:
 
 ```bash
 npm run dev
-```
-
-Starts the Vite development server.
-
-### Production Build
-
-```bash
 npm run build
+npm run preview
+npm run lint
 ```
 
-Creates an optimized production build.
-
-### Preview Production Build
+At the root project level:
 
 ```bash
-npm run preview
+node main.js
 ```
 
-Serves the production build locally for testing.
+---
+
+## Example Use Cases
+
+- Track monthly household spending
+- Review category-wise expenses
+- Monitor whether monthly spending exceeds a budget
+- Identify the highest-value purchases
+- Review recent transactions by date and category
 
 ---
 
-## 📊 Example Expense Data
+## Project Status
 
-The application currently works with locally defined expense data.
-
-Example:
-
-```js
-{
-  id: 1,
-  title: "Grocery shopping",
-  amount: 1250,
-  category: "Food",
-  date: "2026-09-20"
-}
-```
-
-The current version does **not** require a backend or external database.
+This project is a working expense analysis and dashboard application with a strong frontend foundation and reusable financial logic. It is suitable for personal budgeting, learning React architecture, and extending into additional functionality such as persistence, authentication, and more advanced analytics.
 
 ---
 
-## 🚧 Current Status
+## Future Enhancements
 
-Money Atlas is currently a **frontend-focused project**.
+Potential improvements include:
 
-### Completed / In Progress
-
-* [x] React + Vite setup
-* [x] Expense data model
-* [x] Expense calculations
-* [x] Currency/date formatting
-* [x] Component architecture
-* [x] Spending overview
-* [x] Category visualization
-* [x] Expense timeline
-* [x] Add expense interface
-* [x] Budget components
-* [x] Insight components
-* [ ] Complete responsive design
-* [ ] Persistent storage
-* [ ] Backend API
-* [ ] Authentication
-* [ ] Production deployment
+- persistent storage using a database or local storage
+- user authentication and multi-user support
+- API integration for real-time finance records
+- CSV or JSON export features
+- recurring expense detection
+- advanced forecasting and trend analysis
+- AI-powered financial insights
 
 ---
 
-## 🔮 Future Improvements
+## Conclusion
 
-Possible future iterations include:
+Personal Expense Analyzer is a practical finance dashboard designed to help users understand where their money goes. It combines a polished user interface with structured expense logic to deliver a simple but effective personal budgeting experience.
 
-### Backend Integration
 
-Replace local mock data with a real API.
-
-```text
-React
-  ↓
-FastAPI
-  ↓
-PostgreSQL
-```
-
-### Persistent Expenses
-
-Store user expenses in a database instead of browser/application state.
-
-### Authentication
-
-Add user accounts so every user has an isolated financial workspace.
-
-### Advanced Analytics
-
-Add:
-
-* Spending trends
-* Category comparisons
-* Budget history
-* Month-over-month changes
-* Recurring expenses
-* Spending patterns
-
-### Data Export
-
-Allow users to export their financial data as:
-
-* CSV
-* JSON
-* Excel
-
-### AI-Powered Insights
-
-A future version could use an AI layer to transform financial data into natural-language insights, for example:
-
-> "Food spending increased this month, mainly because of restaurant purchases."
-
-The AI layer would complement the analytics rather than replace deterministic financial calculations.
-
----
-
-## 🎯 Learning Objectives
-
-This project was built to strengthen practical frontend development skills through a real application rather than isolated tutorials.
-
-Key objectives include:
-
-* Understanding React component architecture
-* Managing shared state
-* Passing data through props
-* Designing reusable components
-* Handling user interactions
-* Transforming JavaScript data for UI
-* Separating business logic from presentation
-* Building responsive interfaces
-* Creating a visually distinctive product experience
 
 ---
 
